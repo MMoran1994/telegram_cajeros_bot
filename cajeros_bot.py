@@ -4,9 +4,12 @@ import auxiliares
 from red_de_cajeros import RedDeCajeros
 import json
 import threading
+import os
 
+if 'TELEBOT_TOKEN' not in os.environ:
+    sys.exit("Error: El token para el bot no está definido en el ambiente")
 
-bot = telebot.TeleBot('5276948681:AAFndSvuna6J7EdDAdTUz4GgeSNRM-GyU_Q')
+bot = telebot.TeleBot(os.getenv('TELEBOT_TOKEN'))
 
 dataset_link, dataset_banelco = auxiliares.obtener_dataset()
 
